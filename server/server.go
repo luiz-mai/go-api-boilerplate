@@ -20,7 +20,10 @@ func Run(
 	e.GET("/health", handler.HandleHealthCheck())
 
 	e.GET("/todos", handler.HandleGetToDos(todoService))
+	e.GET("/todos/:id", handler.HandleGetToDo(todoService))
 	e.POST("/todos", handler.HandleCreateToDo(todoService))
+	e.PUT("/todos/:id", handler.HandleUpdateToDo(todoService))
+	e.DELETE("/todos/:id", handler.HandleDeleteToDo(todoService))
 
 	err = e.Start(fmt.Sprintf(":%d", cfg.HTTP.Port))
 	if err != nil {
