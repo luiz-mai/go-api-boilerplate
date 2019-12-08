@@ -36,9 +36,11 @@ func (r todoRepo) GetAll() ([]model.ToDo, error) {
 func (r todoRepo) Create(todo model.ToDo) error {
 	const query = `
 		INSERT INTO tab_todo
-			(title)
-		VALUES
-			(?)
+			( title
+			)
+			VALUES
+				( ?
+				)
 		;
 	`
 
