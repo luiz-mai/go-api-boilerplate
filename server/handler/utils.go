@@ -6,6 +6,10 @@ import (
 	"github.com/labstack/echo"
 )
 
-func ResponseOK(ctx echo.Context, i interface{}) error {
+func responseOK(ctx echo.Context, i interface{}) error {
 	return ctx.JSON(http.StatusOK, i)
+}
+
+func responseNoContent(ctx echo.Context) error {
+	return ctx.JSON(http.StatusNoContent, nil)
 }

@@ -18,3 +18,7 @@ func NewToDoService(db *data.Conn) ToDoService {
 func (s ToDoService) GetAll() ([]model.ToDo, error) {
 	return s.data.ToDo().GetAll()
 }
+
+func (s ToDoService) Create(todo model.ToDo) error {
+	return s.data.ToDo().Create(todo)
+}

@@ -18,7 +18,9 @@ func Run(
 	e.HideBanner = true
 
 	e.GET("/health", handler.HandleHealthCheck())
+
 	e.GET("/todos", handler.HandleGetToDos(todoService))
+	e.POST("/todos", handler.HandleCreateToDo(todoService))
 
 	err = e.Start(fmt.Sprintf(":%d", cfg.HTTP.Port))
 	if err != nil {

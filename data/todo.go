@@ -33,6 +33,23 @@ func (r todoRepo) GetAll() ([]model.ToDo, error) {
 	return todos, nil
 }
 
+func (r todoRepo) Create(todo model.ToDo) error {
+	const query = `
+		INSERT INTO tab_todo
+			(title)
+		VALUES
+			(?)
+		;
+	`
+
+	_, err := r.conn.Exec(query, todo.Title)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (r todoRepo) parseList(rows *sql.Rows, err error) ([]model.ToDo, error) {
 	if err != nil {
 		return nil, err
