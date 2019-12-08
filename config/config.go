@@ -9,6 +9,7 @@ import (
 type Config struct {
 	Global GlobalConfig
 	HTTP   HTTPConfig
+	DB     DBConfig
 }
 
 type GlobalConfig struct {
@@ -17,6 +18,14 @@ type GlobalConfig struct {
 
 type HTTPConfig struct {
 	Port int
+}
+
+type DBConfig struct {
+	Host string
+	Port int
+	User string
+	Pass string
+	Name string
 }
 
 func Read(configPaths ...string) (cfg Config, err error) {
