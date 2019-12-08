@@ -86,14 +86,14 @@ func (r todoRepo) Update(todo model.ToDo) error {
 	return nil
 }
 
-func (r todoRepo) Delete(todo model.ToDo) error {
+func (r todoRepo) Delete(id int64) error {
 	const query = `
 		DELETE FROM tab_todo
 			WHERE todo_id = ?
 		;
 	`
 
-	_, err := r.conn.Exec(query, todo.ID)
+	_, err := r.conn.Exec(query, id)
 	if err != nil {
 		return err
 	}
