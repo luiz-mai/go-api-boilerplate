@@ -3,3 +3,10 @@ name = "go-api-boilerplate"
 
 [http]
 port = 8081
+
+[db]
+host = "localhost"
+port = "8889"
+user = "root"
+pass = "root"
+name = "boilerplate"
