@@ -1,0 +1,5 @@
+[app]
+name = "go-api-boilerplate"
+
+[http]
+port = 8081
