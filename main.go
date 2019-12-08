@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/luiz-mai/go-api-boilerplate/data"
 	"github.com/luiz-mai/go-api-boilerplate/server"
 	"github.com/luiz-mai/go-api-boilerplate/service"
 
@@ -16,7 +17,13 @@ func main() {
 		return
 	}
 
-	todoService := service.NewToDoService()
+	db, err := data.Connect(cfg)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	todoService := service.NewToDoService(db)
 
 	err = server.Run(
 		cfg,
