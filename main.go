@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/luiz-mai/go-api-boilerplate/server"
+	"github.com/luiz-mai/go-api-boilerplate/service"
 
 	"github.com/luiz-mai/go-api-boilerplate/config"
 )
@@ -15,7 +16,12 @@ func main() {
 		return
 	}
 
-	err = server.Run(cfg)
+	todoService := service.NewToDoService()
+
+	err = server.Run(
+		cfg,
+		todoService,
+	)
 	if err != nil {
 		fmt.Println(err)
 		return
