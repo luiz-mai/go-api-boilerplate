@@ -25,14 +25,8 @@ func main() {
 
 	todoService := service.NewToDoService(db)
 
-	err = server.Run(
+	server.Run(
 		cfg,
 		todoService,
 	)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	return
 }
